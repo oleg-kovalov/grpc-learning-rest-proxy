@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+package echo;
+option go_package="user/userpb";
+
+import "google/api/annotations.proto";
+import "google/protobuf/field_mask.proto";
+
+
+service UserService {
+
+    rpc ListUsers (ListUsersRequest) returns (ListUsersResponse) {
+        option (google.api.http) = {
+            get: "/api/v1/users"
+        };
+    };
+
+    rpc GetUser (GetUserRequest) returns (GetUserResponse) {
+        option (google.api.http) = {
+            get: "/api/v1/users/{user_id}"
+        };
+    }
+
+    rpc AddUser (AddUserRequest) returns (AddUserResponse) {
+        option (google.api.http) = {
+            post: "/api/v1/users"
+            body: "*"
+        };
+    }
+
+    rpc UpdateUser (UpdateUserRequest) returns (UpdateUserResponse) {
+        option (google.api.http) = {
+            patch: "/api/v1/users/{user.id}"
+            body: "user"
+        };
+    }
+
+}
+
+message User {
+    // Id uniquely identifies the user. Output only
+    string id = 1;
+    // Output only
+    string first_name = 2;
+    string email = 3;
+    float latitude = 4;
+    float longitude = 5;
+}
+
+message ListUsersRequest {}
+
+message ListUsersResponse {
+    repeated User users = 1;
+}
+
+message GetUserRequest {
+    string user_id = 1;
+}
+
+message GetUserResponse {
+    User user = 1;
+}
+
+message AddUserRequest {
+    User user = 1;
+}
+
+message AddUserResponse {
+    User user = 1;
+}
+
+message UpdateUserRequest {
+    User user = 1;
+    google.protobuf.FieldMask update_mask = 2;
+}
+
+message UpdateUserResponse {
+    User user = 1;
+}
+

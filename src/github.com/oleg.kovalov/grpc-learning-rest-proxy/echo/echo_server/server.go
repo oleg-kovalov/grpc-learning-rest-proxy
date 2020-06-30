@@ -24,7 +24,7 @@ func (*server) Echo(ctx context.Context, request *echopb.EchoRequest) (*echopb.E
 
 func main() {
 
-	fmt.Println("starting Echo server .. ")
+	fmt.Printf("[server] starting Echo server .. \n")
 
 	lis, err :=net.Listen("tcp", "0.0.0.0:50051")
 	if err != nil {

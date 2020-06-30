@@ -20,7 +20,7 @@ var (
 )
 
 func run() error {
-	fmt.Printf("starting gRPC-REST reverse proxy ..")
+	fmt.Printf("[gateway] starting gRPC-REST reverse proxy ..\n")
 
 	ctx := context.Background()
 	ctx, cancel := context.WithCancel(ctx)
