@@ -35,6 +35,31 @@ type server struct{
 	//}
 }
 
+func (s *server) DeleteUser(ctx context.Context, req *userpb.DeleteUserRequest) (*userpb.DeleteUserResponse, error) {
+	fmt.Printf("[server] DeleteUser operation was invoked\n")
+
+	var u *userpb.User
+	tmp := s.users[:0]
+	for _, user := range s.users {
+		if user.GetId() != req.GetUserId() {
+			tmp = append(tmp, user)
+		} else {
+			u = user
+		}
+	}
+	s.users = tmp
+
+	if u == nil {
+		return nil, status.Errorf(codes.NotFound, "user with ID %q was not found", req.GetUserId())
+	}
+
+	res := &userpb.DeleteUserResponse{
+		User: u,
+	}
+	return res, nil
+}
+
+
 func (s *server) UpdateUser(ctx context.Context, req *userpb.UpdateUserRequest) (*userpb.UpdateUserResponse, error) {
 	fmt.Printf("[server] UpdateUser operation was invoked\n")
 
@@ -63,7 +88,6 @@ func (s *server) UpdateUser(ctx context.Context, req *userpb.UpdateUserRequest) 
 	res := &userpb.UpdateUserResponse{
 		User: u,
 	}
-
 	return res, nil
 }
 
@@ -86,7 +110,6 @@ func (s *server) AddUser(ctx context.Context,req *userpb.AddUserRequest) (*userp
 	res := &userpb.AddUserResponse{
 		User: user,
 	}
-
 	return res, nil
 }
 
@@ -103,7 +126,7 @@ func (s *server) GetUser(ctx context.Context,req *userpb.GetUserRequest) (*userp
 		}
 	}
 
-	return nil, status.Errorf(codes.NotFound, "user %q could not be found", req.GetUserId())
+	return nil, status.Errorf(codes.NotFound, "user with ID %q was not found", req.GetUserId())
 }
 
 
@@ -113,7 +136,6 @@ func (s *server) ListUsers(context.Context, *userpb.ListUsersRequest) (*userpb.L
 	res := &userpb.ListUsersResponse{
 		Users: s.users,
 	}
-
 	return res, nil
 }
 

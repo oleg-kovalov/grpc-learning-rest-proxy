@@ -10,7 +10,7 @@ import (
 
 func main() {
 
-	fmt.Println("starting Echo client ..")
+	fmt.Println("[client] starting Echo client ..")
 
 	cc, err := grpc.Dial("localhost:50051", grpc.WithInsecure())
 	if err != nil {
@@ -28,7 +28,7 @@ func main() {
 
 
 func echoCall(c echopb.EchoServiceClient) {
-	fmt.Println("making Echo call to server")
+	fmt.Println("[client] making Echo call to server")
 
 	req := &echopb.EchoRequest{
 		Msg: "hello from client",
