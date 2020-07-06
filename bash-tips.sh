@@ -18,7 +18,7 @@ protoc \
     --go_out=plugins=grpc:. \
     --grpc-gateway_out=. \
     --swagger_out=./openapi \
-    proto/echo/echo.proto           # proto/echo/echo.proto
+    proto/user/user.proto           # proto/echo/echo.proto
 
 
 # run gRPC server
