@@ -7,7 +7,7 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"github.com/oleg.kovalov/grpc-learning-rest-proxy/user/userpb"
+	"github.com/oleg-kovalov/grpc-learning-rest-proxy/user/userpb"
 	"log"
 	"net"
 )

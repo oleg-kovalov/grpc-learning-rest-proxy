@@ -1,4 +1,4 @@
-module github.com/oleg.kovalov/grpc-learning-rest-proxy
+module github.com/oleg-kovalov/grpc-learning-rest-proxy
 
 go 1.14
 

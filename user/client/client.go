@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"google.golang.org/genproto/protobuf/field_mask"
 	"google.golang.org/grpc"
-	"github.com/oleg.kovalov/grpc-learning-rest-proxy/user/userpb"
+	"github.com/oleg-kovalov/grpc-learning-rest-proxy/user/userpb"
 	"log"
 )
 

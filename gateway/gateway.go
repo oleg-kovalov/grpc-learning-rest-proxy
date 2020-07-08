@@ -10,8 +10,8 @@ import (
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"google.golang.org/grpc"
 
-	echogw 	"github.com/oleg.kovalov/grpc-learning-rest-proxy/echo/echopb"
-	usergw 	"github.com/oleg.kovalov/grpc-learning-rest-proxy/user/userpb"
+	echogw 	"github.com/oleg-kovalov/grpc-learning-rest-proxy/echo/echopb"
+	usergw 	"github.com/oleg-kovalov/grpc-learning-rest-proxy/user/userpb"
 )
 
 var (

@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 	"google.golang.org/grpc"
-	"github.com/oleg.kovalov/grpc-learning-rest-proxy/echo/echopb"
+	"github.com/oleg-kovalov/grpc-learning-rest-proxy/echo/echopb"
 	"log"
 	"net"
 )
